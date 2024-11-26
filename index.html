@@ -1,28 +1,104 @@
 <!doctype html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/style/output.css" />
-  <link rel="stylesheet" href="assets/style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style/output.css" />
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body class="">
     <header>
         <nav class="bg-black text-white p-4 font-serif">
-             <div>
+            <div>
                 <ul class="flex justify-between items-center">
                     <li class="flex-grow max-w-xs">
                         <input type="text" placeholder="Search" class="rounded-xl w-full p-2 text-black">
                     </li>
-                    <a href="#"><li class="hover:text-gray-400 px-3">Players</li></a>
-                    <a href="#"><li class="hover:text-gray-400 px-3">Teams</li></a>
-                    <a href="#"><li class="hover:text-gray-400 px-3">Market</li></a>
+                    <a href="#">
+                        <li class="hover:text-gray-400 px-3">Feedback</li>
+                    </a>
+                    <a href="#">
+                        <li class="hover:text-gray-400 px-3">Teams</li>
+                    </a>
+                    <a href="#">
+                        <li class="hover:text-gray-400 px-3">Legends Players</li>
+                    </a>
                 </ul>
-             </div>
+            </div>
         </nav>
     </header>
     <main>
-        
+        <div class="p-1 whitespace-nowrap md:p-5 lg:p-10">
+            <h1 class="flex justify-center items-center font-serif lg:text-4xl md:text-2xl sm:xl p-2 font-bold">Create
+                your own football formation</h1>
+            <h2 class="flex justify-center items-center font-serif lg:text-2xl p-2  text-xs">Choose your favorite
+                players to form your squad.</h2>
+            <ol class="">
+                <li class="flex justify-center items-center p-0 font-serif lg:text-xl text-xs">1 - Select the formation
+                    for your lineup.</li><br>
+                <li class="flex justify-center items-center p-0 font-serif lg:text-xl text-xs">2 - Search and add
+                    players to your squad.</li><br>
+                <li class="flex justify-center items-center p-0 font-serif lg:text-xl text-xs">3 - Add a title for your
+                    formation.</li>
+            </ol>
+        </div>
+        <div class="mt-10 px-5 lg:flex">
+            <!-- Stadium -->
+            <div class="">
+                <img src="assets/data/images/stadium_background.webp" alt="classement"
+                    class="rounded-xl  lg:w-[90%] lg:h-[100%]">
+            </div>
+            <!-- Bord table -->
+            <div class="rounded-xl bg-gray-600 p-8 lg:w-[50%] lg:h-auto mt-5 lg:mt-0">
+                <h2 class="p-2 font-serif text-xl">Create Team</h2>
+                <hr class="p-2">
+                <div class="">
+                    <input type="text" placeholder="Team name" class="p-2 rounded-sm mb-5">
+                    <button>✔️</button>
+                </div>
+                <hr class="p-2">
+                <h2 class="p-2 font-serif text-xl">Formation Team</h2>
+                <select name="" id="" class="p-4 mb-5 rounded-xl">
+                    <option value="4-3-3">4-3-3</option>
+                    <option value="4-4-2">4-4-2</option>
+                    <option value="3-5-2">3-5-2</option>
+                    <option value="4-2-3-1">4-2-3-1</option>
+                    <option value="5-3-2">5-3-2</option>
+                </select>
+                <hr class="p-2">
+                <h2 class="p-2 font-serif text-xl">Rank of Team</h2>
+                <!-- Groupe d'étoiles -->
+                <div class="stars-rating">
+                    <i class="fa-regular fa-star" data-value="1"></i>
+                    <i class="fa-regular fa-star" data-value="2"></i>
+                    <i class="fa-regular fa-star" data-value="3"></i>
+                    <i class="fa-regular fa-star" data-value="4"></i>
+                    <i class="fa-regular fa-star" data-value="5"></i>
+                </div><br><br>
+                <hr class="p-2">
+                <div class="p-2 font-serif text-xl">
+                    Information about your team
+                </div>
+            </div>
+        </div>
     </main>
+    <footer class="bg-black p-1 whitespace-nowrap md:p-5 lg:p-20 mt-10">
+        <div class="flex justify-between items-center">
+            <p class="font-serif lg:text-4xl md:text-2xl sm:xl p-2 font-bold text-white">Follow Us : </p>
+            <!-- Icône Facebook -->
+            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook-f text-white lg:text-4xl md:text-2xl sm:xl"></a>
+
+            <!-- Icône X (anciennement Twitter) -->
+            <a href="https://www.x.com" target="_blank" class="fab fa-x text-white lg:text-4xl md:text-2xl sm:xl"></a>
+
+            <!-- Icône Instagram -->
+            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram text-white lg:text-4xl md:text-2xl sm:xl"></a>
+
+        </div>
+    </footer>
 </body>
+
 </html>
