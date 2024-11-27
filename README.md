@@ -1,6 +1,6 @@
 # Moustapha_Ndiaye-FUT
 
-[scrum board](https://github.com/orgs/Youcode-Classe-E-2024-2025/projects/45/views/1)
+[scrum board](https://github.com/orgs/Youcode-Classe-E-2024-2025/projects/45)
 [repo github](https://github.com/Youcode-Classe-E-2024-2025/Moustapha_Ndiaye-FUT.git)
 
 Technologies Requises

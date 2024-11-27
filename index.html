@@ -18,15 +18,15 @@
                         <input type="text" placeholder="Search"
                             class="rounded-xl w-full p-2 text-black text-xs md:text-xl">
                     </li>
-                        <a href="#">
-                            <li class="hover:text-gray-400 px-3 text-xs md:text-xl">Feedback</li>
-                        </a>
-                        <a href="#">
-                            <li class="hover:text-gray-400 px-3 text-xs md:text-xl">Teams</li>
-                        </a>
-                        <a href="#">
-                            <li class="hover:text-gray-400 px-3 whitespace-nowrap text-xs md:text-xl">ALL Players</li>
-                        </a>
+                    <a href="#">
+                        <li class="hover:text-gray-400 px-3 text-xs md:text-xl">Feedback</li>
+                    </a>
+                    <a href="#">
+                        <li class="hover:text-gray-400 px-3 text-xs md:text-xl">Teams</li>
+                    </a>
+                    <a href="#">
+                        <li class="hover:text-gray-400 px-3 whitespace-nowrap text-xs md:text-xl">ALL Players</li>
+                    </a>
                 </ul>
             </div>
         </nav>
@@ -46,47 +46,155 @@
                     formation.</li>
             </ol>
         </div>
-        <div class="mt-10 px-5 lg:flex">
-            <!-- Stadium -->
-            <div class="">
-                <img src="assets/data/images/stadium_background.webp" alt="classement"
-                    class="rounded-xl  lg:w-[90%] lg:h-[100%]">
+        <div class="md:flex justify-around">
+            <div class="relative w-full lg:w-[60%] mb-5 lg:top-[60%]">
+                <!-- Terrain -->
+                <img src="assets/data/images/stadium_background.webp" alt="Terrain de football"
+                    class="w-full h-auto object-cover rounded-xl">
+
+                <!-- Conteneur des joueurs avec positionnement absolu -->
+                <div class="absolute inset-0">
+                    <!-- Attaquants -->
+                    <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
+                        style="top: 5%; left: 50%; transform: translateX(-50%);">
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Attaquant 1"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform" id="forward1">
+                        </div>
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Attaquant 2"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform" id="forward2">
+                        </div>
+                    </div>
+
+                    <!-- Milieux -->
+                    <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
+                        style="top: 25%; left: 50%; transform: translateX(-50%);">
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 1"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="midfielder1">
+                        </div>
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 2"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="midfielder2">
+                        </div>
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 3"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="midfielder3">
+                        </div>
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 4"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="midfielder4">
+                        </div>
+                    </div>
+
+                    <!-- Défenseurs -->
+                    <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
+                        style="top: 50%; left: 50%; transform: translateX(-50%);">
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 1"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="defender1">
+                        </div>
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 2"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="defender2">
+                        </div>
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 3"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="defender3">
+                        </div>
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 4"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
+                                id="defender4">
+                        </div>
+                    </div>
+
+                    <!-- Gardien -->
+                    <div class="absolute w-full flex justify-center"
+                        style="top: 70%; left: 50%; transform: translateX(-50%);">
+                        <div class="w-[10%] lg:w-[12%]">
+                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Gardien"
+                                class="w-full h-auto object-contain hover:scale-110 transition-transform" id="gk">
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Bord table -->
-            <div class="rounded-xl bg-gray-600 p-8 lg:w-[50%] lg:h-auto mt-5 lg:mt-0">
-                <h2 class="p-2 font-serif text-xl">Create Team</h2>
-                <hr class="p-2">
-                <div class="">
-                    <input type="text" placeholder="Team name" class="p-2 rounded-sm mb-5">
-                    <button>✔️</button>
+            <div>
+                <div class="rounded-xl bg-white shadow-2xl p-8 w-full lg:max-w-md ">
+                    <!-- Titre principal -->
+                    <div class="text-center mb-6">
+                        <h1 class="text-2xl font-bold text-blue-700">Create Team</h1>
+                    </div>
+
+                    <!-- Création du nom de l'équipe -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Team Name</label>
+                        <div class="flex">
+                            <input type="text" id="teamNameInput" placeholder="Entrez le nom de votre équipe"
+                                class="w-full p-3 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button id="validateTeamName"
+                                class="bg-blue-500 text-white p-3 rounded-r-lg hover:bg-blue-600 transition duration-300">
+                                ✔️
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sélection de formation -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Formation</label>
+                        <select id="formationSelect"
+                            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="4-4-2">4-4-2 (balanced)</option>
+                            <option value="4-3-3">4-3-3 (Attack)</option>
+                            <option value="3-5-2">3-5-2 (Control)</option>
+                            <option value="4-2-3-1">4-2-3-1 (Possession)</option>
+                            <option value="5-3-2">5-3-2 (Defensive)</option>
+                        </select>
+                    </div>
+
+                    <!--  Team Notation -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Team Level</label>
+                        <div id="starRating" class="flex justify-center space-x-2">
+                            <i class="star fa-star fa-regular text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                                data-value="1"></i>
+                            <i class="star fa-star fa-regular text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                                data-value="2"></i>
+                            <i class="star fa-star fa-regular text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                                data-value="3"></i>
+                            <i class="star fa-star fa-regular text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                                data-value="4"></i>
+                            <i class="star fa-star fa-regular text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                                data-value="5"></i>
+                        </div>
+                    </div>
+
+                    <!-- submit button -->
+                    <button id="createTeamBtn"
+                        class="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition duration-300">
+                        Create
+                    </button>
                 </div>
-                <hr class="p-2">
-                <h2 class="p-2 font-serif text-xl">Formation Team</h2>
-                <select name="" id="" class="p-4 mb-5 rounded-xl">
-                    <option value="4-3-3">4-3-3</option>
-                    <option value="4-4-2">4-4-2</option>
-                    <option value="3-5-2">3-5-2</option>
-                    <option value="4-2-3-1">4-2-3-1</option>
-                    <option value="5-3-2">5-3-2</option>
-                </select>
-                <hr class="p-2">
-                <h2 class="p-2 font-serif text-xl">Rank of Team</h2>
-                <!-- Groupe d'étoiles -->
-                <div class="stars-rating">
-                    <i class="fa-regular fa-star" data-value="1"></i>
-                    <i class="fa-regular fa-star" data-value="2"></i>
-                    <i class="fa-regular fa-star" data-value="3"></i>
-                    <i class="fa-regular fa-star" data-value="4"></i>
-                    <i class="fa-regular fa-star" data-value="5"></i>
-                </div><br><br>
-                <hr class="p-2">
-                <div class="p-2 font-serif text-xl">
-                    Information about your team
+                <div>
+                    <!-- Subtitutions -->
                 </div>
+
             </div>
         </div>
+        </div>
+        </div>
+
     </main>
-    <footer class="bg-black p-1 whitespace-nowrap md:p-5 lg:p-20 mt-10">
+    <footer class="bg-black p-1 whitespace-nowrap md:p-5 lg:p-20 mt-[15%] relative">
         <div class="flex justify-between items-center">
             <p class="font-serif lg:text-4xl md:text-2xl sm:xl p-2 font-bold text-white">Follow Us : </p>
             <!-- Icône Facebook -->
