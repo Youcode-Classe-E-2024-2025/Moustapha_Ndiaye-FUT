@@ -38,7 +38,7 @@
             <h2 class="flex justify-center items-center font-serif lg:text-2xl p-2  text-xs">Choose your favorite
                 players to form your squad.</h2>
             <ol class="">
-                <li class="flex justify-center items-center p-0 font-serif lg:text-xl text-xs">1 -  Add
+                <li class="flex justify-center items-center p-0 font-serif lg:text-xl text-xs">1 - Add
                     players to your squad.</li><br>
                 <li class="flex justify-center items-center p-0 font-serif lg:text-xl text-xs">2 - Select the formation
                     for your lineup.</li><br>
@@ -54,75 +54,196 @@
 
                 <!-- Conteneur des joueurs avec positionnement absolu -->
                 <div class="absolute inset-0">
-                    <!-- Attaquants -->
-                    <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
-                        style="top: 5%; left: 50%; transform: translateX(-50%);">
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Attaquant 1"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform" id="forward1">
+                    <div class="relative w-full h-full">
+                        <!-- Attaquants -->
+                        <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
+                            style="top: 5%; left: 50%; transform: translateX(-50%);">
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Attaquant 1"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="forward1">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Attaquant 2"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="forward2">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Attaquant 2"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform" id="forward2">
-                        </div>
-                    </div>
 
-                    <!-- Milieux -->
-                    <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
-                        style="top: 25%; left: 50%; transform: translateX(-50%);">
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 1"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="midfielder1">
+                        <!-- Milieux -->
+                        <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
+                            style="top: 25%; left: 50%; transform: translateX(-50%);">
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 1"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="midfielder1">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 2"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="midfielder2">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 3"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="midfielder3">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 4"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="midfielder4">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 2"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="midfielder2">
-                        </div>
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 3"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="midfielder3">
-                        </div>
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 4"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="midfielder4">
-                        </div>
-                    </div>
 
-                    <!-- Défenseurs -->
-                    <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
-                        style="top: 50%; left: 50%; transform: translateX(-50%);">
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 1"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="defender1">
+                        <!-- Défenseurs -->
+                        <div class="absolute w-full flex justify-center space-x-4 lg:space-x-8"
+                            style="top: 50%; left: 50%; transform: translateX(-50%);">
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 1"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="defender1">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 2"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="defender2">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 3"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="defender3">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 4"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="defender4">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 2"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="defender2">
-                        </div>
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 3"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="defender3">
-                        </div>
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Défenseur 4"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform"
-                                id="defender4">
-                        </div>
-                    </div>
 
-                    <!-- Gardien -->
-                    <div class="absolute w-full flex justify-center"
-                        style="top: 70%; left: 50%; transform: translateX(-50%);">
-                        <div class="w-[10%] lg:w-[12%]">
-                            <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Gardien"
-                                class="w-full h-auto object-contain hover:scale-110 transition-transform" id="gk">
+                        <!-- Gardien -->
+                        <div class="absolute w-full flex justify-center"
+                            style="top: 70%; left: 50%; transform: translateX(-50%);">
+                            <div class="w-[10%] lg:w-[12%] relative group">
+                                <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Gardien"
+                                    class="player w-full h-auto object-contain hover:scale-110 transition-transform"
+                                    id="gk">
+                                <!-- Menu d'options -->
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
+                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
+                                </div>
+                                <div
+                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
+                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,7 +312,7 @@
         </div>
         </div>
         </div>
-        
+
     </main>
     <footer class="bg-black p-1 whitespace-nowrap md:p-5 lg:p-20 mt-[15%] relative">
         <div class="flex justify-between items-center">
@@ -209,6 +330,7 @@
 
         </div>
     </footer>
+    <script src="assets/script/main.js"></script>
 </body>
 
 </html>
