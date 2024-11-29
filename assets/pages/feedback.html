@@ -34,10 +34,12 @@
     <main>
         <!-- feedback -->
         <section>
-            <div class="bg-gray-100 flex items-center justify-center px-4 py-8 ">
+            <div class="bg-gray-100 flex items-center justify-center px-4 py-8 " style="background-image: url('/assets/data/images/bg.jpg'); 
+background-size: cover; 
+background-position: center;">
                 <div class="bg-white shadow-2xl rounded-2xl p-8 w-full lg:max-w-md">
                     <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">Feedback</h2>
-        
+
                     <form class="space-y-6" id="feedback-form">
                         <!-- Name and Email -->
                         <div class="grid grid-cols-2 gap-4">
@@ -55,10 +57,11 @@
                                 </label>
                                 <input type="email" id="email" placeholder="Your email"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <span id="email-error" class="text-red-500 text-sm hidden">Please enter a valid email address.</span>
+                                <span id="email-error" class="text-red-500 text-sm hidden">Please enter a valid email
+                                    address.</span>
                             </div>
                         </div>
-        
+
                         <!-- Feedback Type -->
                         <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="feedback-type">
@@ -72,9 +75,10 @@
                                 <option value="appreciation">Appreciation</option>
                                 <option value="autre">Other</option>
                             </select>
-                            <span id="feedback-type-error" class="text-red-500 text-sm hidden">Please select a feedback type.</span>
+                            <span id="feedback-type-error" class="text-red-500 text-sm hidden">Please select a feedback
+                                type.</span>
                         </div>
-        
+
                         <!-- Satisfaction Rating -->
                         <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -94,9 +98,10 @@
                                         data-value="5"></i>
                                 </div>
                             </div>
-                            <span id="satisfaction-error" class="text-red-500 text-sm hidden">Please select a satisfaction level.</span>
+                            <span id="satisfaction-error" class="text-red-500 text-sm hidden">Please select a
+                                satisfaction level.</span>
                         </div>
-        
+
                         <!-- Feedback Message -->
                         <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
@@ -106,7 +111,7 @@
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
                             <span id="message-error" class="text-red-500 text-sm hidden">Please enter a message.</span>
                         </div>
-        
+
                         <!-- Additional Options -->
                         <div class="flex items-center">
                             <input type="checkbox" id="contact-back" class="mr-2 rounded focus:ring-blue-500">
@@ -114,7 +119,7 @@
                                 I wish to be contacted
                             </label>
                         </div>
-        
+
                         <!-- Submit Button -->
                         <button type="submit"
                             class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
@@ -124,7 +129,7 @@
                 </div>
             </div>
         </section>
-        
+
 
     </main>
     <footer class="bg-black p-1 whitespace-nowrap md:p-5 lg:p-20 relative">

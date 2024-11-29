@@ -27,162 +27,219 @@ function handlePositionClick(positionName) {
             players.forEach(player => {
                 const playerCard = document.createElement('div');
                 playerCard.classList.add(
-                    'relative',
-                    'group',
-                    'rounded-2xl',
-                    'shadow-lg',
-                    'overflow-hidden',
-                    'transform',
-                    'transition-all',
-                    'duration-300',
-                    'hover:scale-105',
-                    'hover:shadow-2xl',
+                    // 'relative',
+                    // 'group',
+                    // 'rounded-2xl',
+                    // 'shadow-lg',
+                    // 'overflow-hidden',
+                    // 'transform',
+                    // 'transition-all',
+                    // 'duration-300',
+                    // 'hover:scale-105',
+                    // 'hover:shadow-2xl',
                 );
 
-                playerCard.innerHTML = `
-                    <div class="relative">
-                        <div class="relative overflow-hidden">
-                            <img 
-                                src="${player.photo}" 
-                                alt="${player.name}" 
-                                class="object-cover transition-transform duration-300 group-hover:scale-110"
-                            >
-                            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 ">
-                                <h2 class="text-white text-sm font-bold text-center truncate">${player.name}</h2>
-                            </div>
+                if (player.position !== 'GK' && player.position !== 'gk') {
+                    playerCard.innerHTML = `
+                    <div class="relative" style="width: 200px; height: 300px; 
+                        background-image: url('/assets/data/images/icon-25.png'); 
+                        background-size: cover; 
+                        background-position: center;">
+                      
+                       <div class="flex justify-around">
+                           <div class="mt-[25%] ml-3">
+                            <p class="font-semibold">${player.position}</p>
+                            <img src="${player.flag}" alt="${player.name}">
+                          </div>
+                          <div class="mt-[20%]">
+                          <img 
+                            src="${player.photo}" 
+                            alt="${player.name}" 
+                            class="object-cover transition-transform duration-300 group-hover:scale-110">
                         </div>
-                        <div class="p-1 space-y-2">
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="text-white text-center">
-                                    <p class="font-semibold">${player.position}</p>
-                                </div>
-                                <div class="rounded-lg text-center">
-                                    <img src="${player.flag}" alt="Drapeau" class="">
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="space-y-1">
-                                <p class="text-white text-sm"><strong>Rating:</strong> ${player.rating}</p>
-                            </div>
-                        </div>
+                       </div>
+            
+                       <div class="">
+                          <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
+                       </div>
+            
+                       <div class="flex-col">
+                           <div class="flex space-x-1 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">RA</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PA</p>
+                                <p class="font-bold text-sm ml-5 mt-2">SH</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PAS</p>
+                                <p class="font-bold text-sm ml-5 mt-2">DR</p>
+                                <p class="font-bold text-sm ml-5 mt-2">DE</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PH</p>
+                          </div>
+                           <div class="flex space-x-2 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">${player.rating}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.pace}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.shooting}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.passing}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.dribbling}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.defending}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.physical}</p>
+                          </div>
+                       </div> 
                     </div>
-                `;
-
-                // Style supplémentaire pour l'arrière-plan
-                playerCard.style.backgroundImage = 'url("/assets/data/images/badge_total_rush-removebg-preview.png")';
-                playerCard.style.backgroundSize = 'cover';
-                playerCard.style.backgroundPosition = 'center';
-
-                // // Ajouter l'événement 'click' pour sélectionner le joueur
-                // playerCard.addEventListener('click', () => {
-                //     // Mettre à jour TOUS les éléments avec cet ID
-                //     positionElements.forEach(positionElement => {
-                //         positionElement.innerHTML = `
-                //             <div class="relative">
-                //                 <div class="relative overflow-hidden">
-                //                     <img 
-                //                         src="${player.photo}" 
-                //                         alt="${player.name}" 
-                //                         class="object-cover transition-transform duration-300 group-hover:scale-110"
-                //                     >
-                //                     <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 ">
-                //                         <h2 class="text-white text-sm font-bold text-center truncate">${player.name}</h2>
-                //                     </div>
-                //                 </div>
-                //                 <div class="p-1 space-y-2">
-                //                     <div class="grid grid-cols-2 gap-2">
-                //                         <div class="text-white text-center">
-                //                             <p class="font-semibold">${player.position}</p>
-                //                         </div>
-                //                         <div class="rounded-lg text-center">
-                //                             <img src="${player.flag}" alt="Drapeau" class="">
-                //                         </div>
-                //                     </div>
-                //                     <hr>
-                //                     <div class="space-y-1">
-                //                         <p class="text-white text-sm"><strong>Rating:</strong> ${player.rating}</p>
-                //                     </div>
-                //                 </div>
-                //             </div>
-                //         `;
-                //     });
-                // });
-                // Ajouter l'événement 'click' pour sélectionner le joueur
-                //         playerCard.addEventListener('click', () => {
-                //             // Mettre à jour TOUS les éléments avec cet ID pour afficher le joueur sur le terrain
-                //             positionElements.forEach(positionElement => {
-                //                 positionElement.innerHTML = `
-                //     <div class="relative">
-                //         <div class="relative overflow-hidden">
-                //             <img 
-                //                 src="${player.photo}" 
-                //                 alt="${player.name}" 
-                //                 class="object-cover transition-transform duration-300 group-hover:scale-110"
-                //             >
-                //             <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 ">
-                //                 <h2 class="text-white text-sm font-bold text-center truncate">${player.name}</h2>
-                //             </div>
-                //         </div>
-                //         <div class="p-1 space-y-2">
-                //             <div class="grid grid-cols-2 gap-2">
-                //                 <div class="text-white text-center">
-                //                     <p class="font-semibold">${player.position}</p>
-                //                 </div>
-                //                 <div class="rounded-lg text-center">
-                //                     <img src="${player.flag}" alt="Drapeau" class="">
-                //                 </div>
-                //             </div>
-                //             <hr>
-                //             <div class="space-y-1">
-                //                 <p class="text-white text-sm"><strong>Rating:</strong> ${player.rating}</p>
-                //             </div>
-                //         </div>
-                //     </div>
-                // `;
-                //             });
-
-                //             // Supprimer la carte du joueur sélectionné de la liste des remplaçants
-                //             playerCard.remove(); // Enlève la carte du joueur de l'affichage des remplaçants
-
-                //             // (Optionnel) Vous pouvez aussi mettre à jour la liste des remplaçants dans le code JavaScript
-                //             // Par exemple, si vous avez une liste d'objets représentant les joueurs :
-                //             replacePlayers = replacePlayers.filter(replacePlayer => replacePlayer.id !== player.id);
-
-                //             // (Optionnel) Vous pouvez mettre à jour l'affichage de la liste des remplaçants ici si nécessaire
-                //             updateSubstitutesList();
-                //         });
+                  `;
+            
+                  }else{
+                    playerCard.innerHTML = `
+                    <div class="relative" style="width: 200px; height: 300px; 
+                        background-image: url('/assets/data/images/icon-25.png'); 
+                        background-size: cover; 
+                        background-position: center;">
+                      
+                       <div class="flex justify-around">
+                           <div class="mt-[25%] ml-3">
+                            <p class="font-semibold">${player.position}</p>
+                            <img src="${player.flag}" alt="${player.name}">
+                          </div>
+                          <div class="mt-[20%]">
+                          <img 
+                            src="${player.photo}" 
+                            alt="${player.name}" 
+                            class="object-cover transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                       </div>
+            
+                       <div class="">
+                          <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
+                       </div>
+            
+                       <div class="flex-col">
+                           <div class="flex space-x-1.5 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">RA</p>
+                                <p class="font-bold text-sm ml-5 mt-2">DI</p>
+                                <p class="font-bold text-sm ml-5 mt-2">HN</p>
+                                <p class="font-bold text-sm ml-5 mt-2">KI</p>
+                                <p class="font-bold text-sm ml-5 mt-2">RE</p>
+                                <p class="font-bold text-sm ml-5 mt-2">SP</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PO</p>
+            
+                          </div>
+                           <div class="flex space-x-2 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">${player.rating}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.diving}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.handling}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.kicking}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.reflexes}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.speed}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.positioning}</p>
+                          </div>
+                       </div>
+                    </div>
+                  `;
+            
+                  }
+              
                 playerCard.addEventListener('click', () => {
                     // Mettre à jour TOUS les éléments avec cet ID pour afficher le joueur sur le terrain
                     positionElements.forEach(positionElement => {
-                        positionElement.innerHTML = `
-                <div class="relative">
-                    <div class="relative overflow-hidden">
-                        <img 
+                       
+                if (player.position !== 'GK' && player.position !== 'gk') {
+                    positionElement.innerHTML = `
+                    <div class="relative" style="width: 200px; height: 300px; 
+                        background-image: url('/assets/data/images/icon-25.png'); 
+                        background-size: cover; 
+                        background-position: center;">
+                      
+                       <div class="flex justify-around">
+                           <div class="mt-[25%] ml-3">
+                            <p class="font-semibold">${player.position}</p>
+                            <img src="${player.flag}" alt="${player.name}">
+                          </div>
+                          <div class="mt-[20%]">
+                          <img 
                             src="${player.photo}" 
                             alt="${player.name}" 
-                            class="object-cover transition-transform duration-300 group-hover:scale-110"
-                        >
-                        <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 ">
-                            <h2 class="text-white text-sm font-bold text-center truncate">${player.name}</h2>
+                            class="object-cover transition-transform duration-300 group-hover:scale-110">
                         </div>
+                       </div>
+            
+                       <div class="">
+                          <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
+                       </div>
+            
+                       <div class="flex-col">
+                           <div class="flex space-x-1 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">RA</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PA</p>
+                                <p class="font-bold text-sm ml-5 mt-2">SH</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PAS</p>
+                                <p class="font-bold text-sm ml-5 mt-2">DR</p>
+                                <p class="font-bold text-sm ml-5 mt-2">DE</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PH</p>
+                          </div>
+                           <div class="flex space-x-2 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">${player.rating}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.pace}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.shooting}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.passing}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.dribbling}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.defending}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.physical}</p>
+                          </div>
+                       </div> 
                     </div>
-                    <div class="p-1 space-y-2">
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="text-white text-center">
-                                <p class="font-semibold">${player.position}</p>
-                            </div>
-                            <div class="rounded-lg text-center">
-                                <img src="${player.flag}" alt="Drapeau" class="">
-                            </div>
+                  `;
+            
+                  }else{
+                    positionElement.innerHTML = `
+                    <div class="relative" style="width: 200px; height: 300px; 
+                        background-image: url('/assets/data/images/icon-25.png'); 
+                        background-size: cover; 
+                        background-position: center;">
+                      
+                       <div class="flex justify-around">
+                           <div class="mt-[25%] ml-3">
+                            <p class="font-semibold">${player.position}</p>
+                            <img src="${player.flag}" alt="${player.name}">
+                          </div>
+                          <div class="mt-[20%]">
+                          <img 
+                            src="${player.photo}" 
+                            alt="${player.name}" 
+                            class="object-cover transition-transform duration-300 group-hover:scale-110">
                         </div>
-                        <hr>
-                        <div class="space-y-1">
-                            <p class="text-white text-sm"><strong>Rating:</strong> ${player.rating}</p>
-                        </div>
+                       </div>
+            
+                       <div class="">
+                          <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
+                       </div>
+            
+                       <div class="flex-col">
+                           <div class="flex space-x-1.5 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">RA</p>
+                                <p class="font-bold text-sm ml-5 mt-2">DI</p>
+                                <p class="font-bold text-sm ml-5 mt-2">HN</p>
+                                <p class="font-bold text-sm ml-5 mt-2">KI</p>
+                                <p class="font-bold text-sm ml-5 mt-2">RE</p>
+                                <p class="font-bold text-sm ml-5 mt-2">SP</p>
+                                <p class="font-bold text-sm ml-5 mt-2">PO</p>
+            
+                          </div>
+                           <div class="flex space-x-2 tex-sm">
+                                <p class="font-bold text-sm ml-5 mt-2">${player.rating}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.diving}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.handling}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.kicking}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.reflexes}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.speed}</p>
+                                <p class="font-bold text-sm ml-5 mt-2">${player.positioning}</p>
+                          </div>
+                       </div>
                     </div>
-                </div>
-                `;
+                  `;
+            
+                  }
+                        
                     });
+
+                
 
                     // Supprimer la carte du joueur sélectionné de la liste des remplaçants
                     playerCard.remove(); // Enlève la carte du joueur de l'affichage des remplaçants
