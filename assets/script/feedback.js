@@ -1,82 +1,122 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("feedback-form");
 
-    // Validation du champ "Satisfaction Level"
-    // if (!satisfactionLevel) {
-    //     valid = false;
-    //     document.getElementById('satisfaction-error').classList.remove('hidden');
-    // }
+    // Elements
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const feedbackType = document.getElementById("feedback-type");
+    const messageInput = document.getElementById("message");
+    const stars = document.querySelectorAll("#starRating .star");
 
-    document.getElementById('feedback-form').addEventListener('submit', function(event) {
-        event.preventDefault();  // Empêche la soumission par défaut
-    
-        // Récupération des valeurs
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const feedbackType = document.getElementById('feedback-type').value;
-        const satisfactionLevel = document.querySelector('#starRating i.selected') ? true : false;
-        const message = document.getElementById('message').value.trim();
-    
-        // Réinitialisation des messages d'erreur
-        resetErrorMessages();
-    
-        // Variable pour vérifier si tout est valide
+    // Error Messages
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("email-error");
+    const feedbackTypeError = document.getElementById("feedback-type-error");
+    const satisfactionError = document.getElementById("satisfaction-error");
+    const messageError = document.getElementById("message-error");
+
+    let selectedRating = 0;
+
+    // Star Rating Interaction
+    stars.forEach((star, index) => {
+        star.addEventListener("click", () => {
+            selectedRating = index + 1;
+            updateStarRating();
+        });
+        star.addEventListener("mouseover", () => {
+            updateStarRating(index + 1);
+        });
+        star.addEventListener("mouseout", () => {
+            updateStarRating();
+        });
+    });
+
+    function updateStarRating(tempRating = selectedRating) {
+        stars.forEach((star, index) => {
+            star.classList.remove("fa-regular", "fa-solid", "text-yellow-500");
+            star.classList.add(index < tempRating ? "fa-solid text-yellow-500" : "fa-regular");
+        });
+    }
+
+    // Form Validation
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Reset Errors
         let valid = true;
-    
-        // Validation du champ "Name"
-        if (name === "") {
+        resetErrors();
+
+        // Validate Name
+        if (!nameInput.value.trim()) {
+            nameError.classList.remove("hidden");
             valid = false;
-            document.getElementById('name-error').classList.remove('hidden');
         }
-    
-        // Validation du champ "Email"
-        if (email === "" || !validateEmail(email)) {
+
+        // Validate Email
+        if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
+            emailError.classList.remove("hidden");
             valid = false;
-            document.getElementById('email-error').classList.remove('hidden');
         }
-    
-        // Validation du champ "Feedback Type"
-        if (feedbackType === "") {
+
+        // Validate Feedback Type
+        if (!feedbackType.value) {
+            feedbackTypeError.classList.remove("hidden");
             valid = false;
-            document.getElementById('feedback-type-error').classList.remove('hidden');
         }
-    
-        // Validation du champ "Message"
-        if (message === "") {
+
+        // Validate Satisfaction Rating
+        if (selectedRating === 0) {
+            satisfactionError.classList.remove("hidden");
             valid = false;
-            document.getElementById('message-error').classList.remove('hidden');
         }
-    
-        // Si tout est valide, soumettre le formulaire
+
+        // Validate Message
+        if (!messageInput.value.trim()) {
+            messageError.classList.remove("hidden");
+            valid = false;
+        }
+
+        // If valid, process the form and reset it
         if (valid) {
-            alert('Feedback submitted successfully!');
-    
-            // Vider le formulaire après l'alerte
-            document.getElementById('feedback-form').reset();  // Réinitialise tous les champs du formulaire
-    
-            // Réinitialiser les étoiles sélectionnées
-            document.querySelectorAll('.star').forEach(star => {
-                star.classList.remove('selected');
-            });
+            console.log("Form submitted successfully!");
+
+            // Example: Log form data (replace this with an API call if needed)
+            const formData = {
+                name: nameInput.value,
+                email: emailInput.value,
+                feedbackType: feedbackType.value,
+                satisfactionLevel: selectedRating,
+                message: messageInput.value,
+                contactBack: document.getElementById("contact-back").checked,
+            };
+            console.log("Form Data:", formData);
+
+            // Reset Form
+            resetForm();
         }
     });
-    
-    // Fonction de validation de l'email
-    function validateEmail(email) {
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        return emailPattern.test(email);
+
+    function resetErrors() {
+        nameError.classList.add("hidden");
+        emailError.classList.add("hidden");
+        feedbackTypeError.classList.add("hidden");
+        satisfactionError.classList.add("hidden");
+        messageError.classList.add("hidden");
     }
-    
-    // Fonction pour réinitialiser les messages d'erreur
-    function resetErrorMessages() {
-        document.querySelectorAll('.text-red-500').forEach(element => {
-            element.classList.add('hidden');
-        });
+
+    function isValidEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
     }
-    
-    // Gestion de la sélection des étoiles
-    document.querySelectorAll('.star').forEach(star => {
-        star.addEventListener('click', function() {
-            document.querySelectorAll('.star').forEach(s => s.classList.remove('selected')); // Retirer les anciennes sélections
-            this.classList.add('selected'); // Ajouter la classe "selected" à l'étoile cliquée
-        });
-    });
-    
+
+    function resetForm() {
+        // Reset all input fields
+        nameInput.value = "";
+        emailInput.value = "";
+        feedbackType.value = "";
+        messageInput.value = "";
+        selectedRating = 0;
+        updateStarRating();
+        document.getElementById("contact-back").checked = false;
+    }
+});
