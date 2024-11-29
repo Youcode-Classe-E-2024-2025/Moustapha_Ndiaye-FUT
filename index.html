@@ -97,12 +97,7 @@
                                 <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Milieu 1"
                                     class="player w-full h-auto object-contain hover:scale-110 transition-transform"
                                     id="midfielder1">
-                                <!-- Menu d'options -->
-                                <div
-                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
-                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
-                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
-                                </div>
+
                                 <!-- Menu d'options -->
                                 <div
                                     class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
@@ -229,28 +224,28 @@
                         <!-- Gardien -->
                         <div class="absolute w-full flex justify-center"
                             style="top: 70%; left: 50%; transform: translateX(-50%);">
-                            <div class="w-[10%] lg:w-[12%] relative group">
+                            <div class="w-auto lg:w-auto relative group">
                                 <img src="assets/data/images/badge_total_rush-removebg-preview.png" alt="Gardien"
                                     class="player w-full h-auto object-contain hover:scale-110 transition-transform"
-                                    id="gk">
-                                <!-- Menu d'options -->
+                                    id="gk">                                
                                 <div
                                     class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
-                                    <button class=" text-white p-2 rounded mr-2" id="editForward1">Edit</button>
-                                    <button class=" text-white p-2 rounded" id="deleteForward1">Delete</button>
-                                </div>
-                                <div
-                                    class="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-white bg-opacity-90 justify-center items-center rounded">
-                                    <button class="bg-blue-500 text-white p-2 rounded">Add Player</button>
+                                    <button class="bg-blue-500 text-white p-2 rounded" id="GK">Add Player</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Bord table -->
+            <!-- mew players -->
             <div>
-                <div class="rounded-xl bg-white shadow-2xl p-8 w-full lg:max-w-md ">
+                <div class="rounded-xl bg-white shadow-2xl p-8 w-full lg:max-w-md h-fit hidden newPlayers">
+                    <!-- Conteneur pour les cartes -->
+                    <div class="players-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6"></div>
+                </div>
+
+                <!-- Bord table -->
+                <div class="rounded-xl bg-white shadow-2xl p-8 w-full lg:max-w-md mt-5 ">
                     <!-- Titre principal -->
                     <div class="text-center mb-6">
                         <h1 class="text-2xl font-bold text-blue-700">Create Team</h1>
@@ -305,9 +300,7 @@
                         Create
                     </button>
                 </div>
-                <div>
-                    <!-- Subtitutions -->
-                </div>
+
             </div>
         </div>
         </div>
