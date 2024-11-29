@@ -1,28 +1,30 @@
-GK.addEventListener('click', () => {
+function handlePositionClick(positionName) {
+    // Sélectionner TOUS les conteneurs avec ce nom de position, insensible à la casse
+    const positionElements = document.querySelectorAll(`[id="${positionName.toLowerCase()}"], [id="${positionName.toUpperCase()}"]`);
     const newPlayersContainer = document.querySelector('.newPlayers');
     const playersContainer = document.querySelector('.newPlayers .players-container');
 
     // Afficher le conteneur si caché
     newPlayersContainer.classList.remove('hidden');
 
-    // Charger les données
+    // Charger les données depuis le fichier JSON
     fetch('assets/data/DB/players.json')
         .then(response => response.json())
         .then(data => {
             // Vider les anciennes cartes
             playersContainer.innerHTML = '';
 
-            console.log(data); // La base de données est bien chargée  
+            // Filtrer les joueurs par position (en utilisant le nom de position standard)
+            const players = data.players.filter(player => player.position === positionName.toUpperCase());
 
-            // Filtrer les gardiens
-            const goalkeepers = data.players.filter(player => player.position === "GK");
-
-            if (goalkeepers.length === 0) {
-                playersContainer.innerHTML = '<p class="text-gray-600">Aucun gardien trouvé.</p>';
+            // Si aucun joueur n'est trouvé
+            if (players.length === 0) {
+                playersContainer.innerHTML = `<p class="text-gray-600">Aucun ${positionName} trouvé.</p>`;
                 return;
             }
 
-            goalkeepers.forEach(player => {
+            // Créer les cartes pour les joueurs trouvés
+            players.forEach(player => {
                 const playerCard = document.createElement('div');
                 playerCard.classList.add(
                     'relative',
@@ -66,15 +68,16 @@ GK.addEventListener('click', () => {
                     </div>
                 `;
 
+                // Style supplémentaire pour l'arrière-plan
                 playerCard.style.backgroundImage = 'url("/assets/data/images/badge_total_rush-removebg-preview.png")';
                 playerCard.style.backgroundSize = 'cover'; 
                 playerCard.style.backgroundPosition = 'center'; 
 
-                // Ajouter l'événement 'click' ici
+                // Ajouter l'événement 'click' pour sélectionner le joueur
                 playerCard.addEventListener('click', () => {
-                    const gkElement = document.querySelector('#gk'); // Sélectionner l'élément #gk
-                    if (gkElement) {
-                        gkElement.innerHTML = `
+                    // Mettre à jour TOUS les éléments avec cet ID
+                    positionElements.forEach(positionElement => {
+                        positionElement.innerHTML = `
                             <div class="relative">
                                 <div class="relative overflow-hidden">
                                     <img 
@@ -102,7 +105,7 @@ GK.addEventListener('click', () => {
                                 </div>
                             </div>
                         `;
-                    }
+                    });
                 });
 
                 playersContainer.appendChild(playerCard);
@@ -111,5 +114,24 @@ GK.addEventListener('click', () => {
         .catch(error => {
             console.error('Erreur de chargement du fichier JSON: ', error);
         });
-});
+}
 
+// Fonction pour attacher les écouteurs d'événements
+function attachEventListeners() {
+    const positionsToListen = [
+        'LW', 'RW', 'CM', 'CB', 'LB', 'RB', 'GK'
+    ];
+
+    positionsToListen.forEach(position => {
+        // Sélectionner tous les éléments avec cet ID (peu importe la casse)
+        const elements = document.querySelectorAll(`[id="${position.toLowerCase()}"], [id="${position.toUpperCase()}"]`);
+        
+        // Ajouter l'événement à chaque élément trouvé
+        elements.forEach(element => {
+            element.addEventListener('click', () => handlePositionClick(position));
+        });
+    });
+}
+
+// Attacher les écouteurs d'événements une fois le DOM chargé
+document.addEventListener('DOMContentLoaded', attachEventListeners);
