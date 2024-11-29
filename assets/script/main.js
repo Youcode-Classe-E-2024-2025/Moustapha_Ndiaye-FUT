@@ -119,7 +119,7 @@ function handlePositionClick(positionName) {
 // Fonction pour attacher les écouteurs d'événements
 function attachEventListeners() {
     const positionsToListen = [
-        'LW', 'RW', 'CM', 'CB', 'LB', 'RB', 'GK'
+        'LW', 'RW', 'CM', 'CB', 'LB', 'RB', 'GK', 'CDM', 'LWB','RWB', 'LM','RM',
     ];
 
     positionsToListen.forEach(position => {
