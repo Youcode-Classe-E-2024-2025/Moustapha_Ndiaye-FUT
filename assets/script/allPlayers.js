@@ -1,5 +1,5 @@
 // Fonction pour gérer les opérations CRUD sur les cartes de joueurs
-function setupPlayerCardCRUD(playerCard, player) {
+function setupPlayerCardCRUD(playerCard, player) { 
   // Créer un menu dropdown pour les options
   const optionsDropdown = document.createElement('div');
   optionsDropdown.classList.add('absolute', 'top-0', 'right-0', 'm-2', 'bg-white', 'border', 'rounded', 'shadow-lg', 'hidden', 'z-10');
@@ -119,6 +119,142 @@ function openPlayerDetailsModal(player) {
     document.body.removeChild(modal);
   });
 }
+// ----------------------------
+// Bouton d'ajout de joueur
+const addPlayerButton = document.getElementById('addPlayerButton');
+addPlayerButton.addEventListener('click', openAddPlayerModal);
+
+// Modal pour ajouter un joueur
+function openAddPlayerModal() {
+  const modal = document.createElement('div');
+  modal.classList.add('fixed', 'inset-0', 'bg-black', 'bg-opacity-50', 'flex', 'items-center', 'justify-center', 'z-50');
+  modal.innerHTML = `
+    <div class="bg-white p-6 rounded-lg max-w-4xl w-full">
+      <h2 class="text-xl font-bold mb-4">Ajouter un Joueur</h2>
+      <form id="addPlayerForm" class="space-y-4">
+        <!-- Ligne 1 : Nom et Position -->
+        <div class="flex gap-4">
+          <input type="text" name="name" placeholder="Nom" class="w-1/2 mb-2 p-2 border rounded" required>
+          <input type="text" name="position" placeholder="Position" class="w-1/2 mb-2 p-2 border rounded" required>
+        </div>
+
+        <!-- Ligne 2 : Nationalité et Évaluation -->
+        <div class="flex gap-4">
+          <input type="text" name="nationality" placeholder="Nationalité" class="w-1/2 mb-2 p-2 border rounded" required>
+          <input type="number" name="rating" placeholder="Évaluation" class="w-1/2 mb-2 p-2 border rounded" required>
+        </div>
+
+        <!-- Ligne 3 : Statistiques -->
+        <div class="flex gap-4">
+          <input type="number" name="pace" placeholder="Vitesse" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="shooting" placeholder="Tir" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="passing" placeholder="Passes" class="w-1/3 mb-2 p-2 border rounded" required>
+        </div>
+        <div class="flex gap-4">
+          <input type="number" name="dribbling" placeholder="Dribbles" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="defending" placeholder="Défense" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="physical" placeholder="Physique" class="w-1/3 mb-2 p-2 border rounded" required>
+        </div>
+
+        <!-- Gardien de but (champ conditionnel) -->
+        <div class="flex gap-4">
+          <input type="number" name="diving" placeholder="Plongée" class="w-1/3 mb-2 p-2 border rounded">
+          <input type="number" name="handling" placeholder="Prise de balle" class="w-1/3 mb-2 p-2 border rounded">
+          <input type="number" name="kicking" placeholder="Dégagement" class="w-1/3 mb-2 p-2 border rounded">
+        </div>
+        <div class="flex gap-4">
+          <input type="number" name="reflexes" placeholder="Réflexes" class="w-1/3 mb-2 p-2 border rounded">
+          <input type="number" name="positioning" placeholder="Positionnement" class="w-1/3 mb-2 p-2 border rounded">
+        </div>
+
+        <!-- Champ pour l'URL de l'image -->
+        <div class="flex gap-4 mt-4">
+          <input type="text" name="photo" placeholder="URL de la photo" class="w-full mb-2 p-2 border rounded" required>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex justify-between mt-4">
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+          <button type="button" class="bg-red-500 text-white px-4 py-2 rounded close-modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const form = modal.querySelector('#addPlayerForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const newPlayer = {
+      name: formData.get('name'),
+      position: formData.get('position'),
+      nationality: formData.get('nationality'),
+      rating: formData.get('rating'),
+      pace: formData.get('pace'),
+      shooting: formData.get('shooting'),
+      passing: formData.get('passing'),
+      dribbling: formData.get('dribbling'),
+      defending: formData.get('defending'),
+      physical: formData.get('physical'),
+      diving: formData.get('diving'),
+      handling: formData.get('handling'),
+      kicking: formData.get('kicking'),
+      reflexes: formData.get('reflexes'),
+      positioning: formData.get('positioning'),
+      photo: formData.get('photo'),
+      //photo: 'https://intranet.youcode.ma/storage/users/profile/1220-1728555049.jpg', // L'URL de l'image
+      //id: Date.now()  // Unique ID based on the timestamp
+    };
+
+    // Call the function to handle the new player
+    addPlayer(newPlayer);
+
+    // Close the modal
+    document.body.removeChild(modal);
+  });
+
+  // Close the modal when clicking "Annuler"
+  modal.querySelector('.close-modal').addEventListener('click', () => {
+    document.body.removeChild(modal);
+  });
+}
+
+// // Fonction d'ajout de joueur
+// function addPlayer(newPlayer) {
+//   // Logique d'ajout du joueur (adapter selon votre backend ou stockage local)
+//   console.log('Player added:', newPlayer);
+
+//   // Si vous utilisez un tableau pour gérer les joueurs, vous pouvez l'ajouter à votre liste ici
+//   // players.push(newPlayer);
+//   createPlayerCard(newPlayer);
+//   // Optionnel : Recharger la liste des joueurs pour afficher la mise à jour
+//   loadPlayers();
+// }
+function addPlayer(newPlayer) {
+  fetch('../data/DB/players.json')
+    .then(response => response.json())
+    .then(data => {
+      // Ajouter le joueur au tableau des joueurs
+      data.players.push(newPlayer);
+
+      // Simuler la sauvegarde du fichier JSON
+      console.log('Nouveau joueur ajouté au JSON:', data);
+
+      // Afficher immédiatement la carte
+      const playerCard = createPlayerCard(newPlayer);
+      document.getElementById('playersContainer').appendChild(playerCard);
+    })
+    .catch(error => {
+      console.error("Erreur lors de l'ajout du joueur:", error);
+    });
+}
+
+
+
+//--------------------------------
 
 // Modal pour modifier un joueur
 function openEditPlayerModal(player) {
@@ -152,8 +288,8 @@ function openEditPlayerModal(player) {
         `).join('')}
 
         <div class="flex justify-between mt-4">
-          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Enregistrer</button>
-          <button type="button" class="bg-red-500 text-white px-4 py-2 rounded close-modal">Annuler</button>
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
+          <button type="button" class="bg-red-500 text-white px-4 py-2 rounded close-modal">Cancel</button>
         </div>
       </form>
     </div>
@@ -200,85 +336,71 @@ function deletePlayer(player) {
     console.log('Player deleted:', player);
     
     // Supprimer visuellement la carte du joueur
-    const playerCard = document.querySelector(`[data-player-id="${player.id}"]`);
+    const playerCard = document.querySelector(`[data-player-name="${player.name}"]`);
     if (playerCard) {
       playerCard.remove();
     }
   }
 }
 
-// Fonction de mise à jour de joueur
-function updatePlayer(updatedPlayer) {
-  console.log('Joueur mis à jour:', updatedPlayer);
-  
-  // Mettre à jour la carte du joueur
-  const playerCard = document.querySelector(`[data-player-id="${updatedPlayer.id}"]`);
-  if (playerCard) {
-    // Mettre à jour les éléments textuels si nécessaire
-    const nameElement = playerCard.querySelector('.player-name');
-    const positionElement = playerCard.querySelector('.player-position');
-    
-    if (nameElement) nameElement.textContent = updatedPlayer.name;
-    if (positionElement) positionElement.textContent = updatedPlayer.position;
-  }
-}
 
-
+// Créer une carte pour chaque joueur
 function createPlayerCard(player) {
   const isGoalkeeper = player.position.toUpperCase() === 'GK';
-    // Équivalences des labels de statistiques
-    const statsLabels = isGoalkeeper 
-        ? ['RA', 'DI', 'HN', 'KI', 'RE', 'SP', 'PO']
-        : ['RA', 'PA', 'SH', 'PAS', 'DR', 'DE', 'PH'];
+  // Équivalences des labels et valeurs de statistiques
+  const statsLabels = isGoalkeeper
+    ? ['RA', 'DI', 'HN', 'KI', 'RE', 'SP', 'PO']
+    : ['RA', 'PA', 'SH', 'PAS', 'DR', 'DE', 'PH'];
 
-    // Équivalences des valeurs de statistiques
-    const statsValues = isGoalkeeper 
-        ? [player.rating, player.diving, player.handling, player.kicking, player.reflexes, player.speed, player.positioning]
-        : [player.rating, player.pace, player.shooting, player.passing, player.dribbling, player.defending, player.physical];
+  const statsValues = isGoalkeeper
+    ? [player.rating, player.diving, player.handling, player.kicking, player.reflexes, player.speed, player.positioning]
+    : [player.rating, player.pace, player.shooting, player.passing, player.dribbling, player.defending, player.physical];
 
   // Créer un conteneur pour la carte du joueur
   const playerCard = document.createElement('div');
   playerCard.classList.add(
-    'relative', 
-    'bg-white', 
-    'border', 
-    'rounded-lg', 
-    'p-4', 
-    'shadow-md', 
-    'hover:shadow-lg', 
+    'relative',
+    'bg-white',
+    'border',
+    'rounded-lg',
+    'p-4',
+    'shadow-md',
+    'hover:shadow-lg',
     'transition-shadow'
   );
 
-  // Contenu de la carte
   playerCard.innerHTML = `
-        <div class="relative" style="width: 200px; height: 300px; background-image: url('/assets/data/images/icon-25.png'); background-size: cover; background-position: center;">
-            <div class="flex justify-around">
-                <div class="mt-[25%] ml-3">
-                    <p class="font-semibold">${player.position}</p>
-                    <img src="${player.flag}" alt="${player.name}">
-                </div>
-                <div class="mt-[20%]">
-                    <img src="${player.photo}" alt="${player.name}" class="object-cover transition-transform duration-300 group-hover:scale-110">
-                </div>
-            </div>
-            <div>
-                <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
-            </div>
-            <div class="flex-col">
-                <div class="flex space-x-1 tex-sm">
-                    ${statsLabels.map(label => `<p class="font-bold text-sm ml-5 mt-2">${label}</p>`).join('')}
-                </div>
-                <div class="flex space-x-2 tex-sm">
-                    ${statsValues.map(value => `<p class="text-sm ml-5 mt-2">${value}</p>`).join('')}
-                </div>
-            </div>
+    <div class="relative" style="width: 200px; height: 300px; background-image: url('/assets/data/images/icon-25.png'); background-size: cover; background-position: center;">
+      <div class="flex justify-around">
+        <div class="mt-[25%] ml-3">
+          <p class="font-semibold">${player.position}</p>
+          <img src="${player.flag}" alt="${player.name}">
         </div>
-    `;
+        <div class="mt-[20%]">
+          <img src="${player.photo}" alt="${player.name}" class="object-cover transition-transform duration-300 group-hover:scale-110">
+        </div>
+      </div>
+      <div>
+        <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
+      </div>
+      <div class="flex-col">
+        <div class="flex space-x-1 tex-sm">
+          ${statsLabels.map(label => `<p class="font-bold text-sm ml-5 mt-2">${label}</p>`).join('')}
+        </div>
+        <div class="flex space-x-2 tex-sm">
+          ${statsValues.map(value => `<p class="text-sm ml-5 mt-2">${value}</p>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Ajouter l'attribut data-player-name avec le nom du joueur
+  playerCard.setAttribute('data-player-name', player.name);
 
   return playerCard;
 }
 
-// Fonction modifiée de chargement des joueurs
+//Fonction modifiée de chargement des joueurs
 function loadPlayers() {
   fetch('../data/DB/players.json')
     .then(response => response.json())
@@ -299,9 +421,63 @@ function loadPlayers() {
       });
     })
     .catch(error => {
-      console.error('Erreur de chargement du fichier JSON:', error);
+      console.error('JSON loading:', error);
     });
 }
 
 // Appel initial
 loadPlayers();
+function updatePlayer(updatedPlayer) {
+  // Charger à nouveau tous les joueurs et mettre à jour
+  fetch('../data/DB/players.json')
+    .then(response => response.json())
+    .then(data => {
+      // Trouver l'index du joueur à mettre à jour
+      const playerIndex = data.players.findIndex(p => p.id === updatedPlayer.id);
+      
+      if (playerIndex !== -1) {
+        // Remplacer le joueur existant
+        data.players[playerIndex] = updatedPlayer;
+        
+        // Recharger et afficher les joueurs mis à jour
+        renderPlayers(data.players);
+      } else {
+        console.error('Player not found');
+      }
+    })
+    .catch(error => {
+      console.error('Loading error:', error);
+    });
+}
+
+function loadPlayers() {
+  fetch('../data/DB/players.json')
+    .then(response => response.json())
+    .then(data => {
+      renderPlayers(data.players);
+    })
+    .catch(error => {
+      console.error('Erreur de chargement du fichier JSON:', error);
+    });
+}
+
+function renderPlayers(players) {
+  const playersContainer = document.getElementById('playersContainer');
+  playersContainer.innerHTML = ''; // Vider le conteneur avant de charger
+
+  players.forEach(player => {
+    const playerCard = createPlayerCard(player);
+    
+    // Ajouter un attribut data pour identifier le joueur
+    playerCard.setAttribute('data-player-id', player.id);
+    
+    // Ajouter le support CRUD
+    setupPlayerCardCRUD(playerCard, player);
+    
+    playersContainer.appendChild(playerCard);
+  });
+}
+
+// Initialisation
+loadPlayers();
+  
