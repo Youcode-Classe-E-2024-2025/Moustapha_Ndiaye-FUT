@@ -135,6 +135,36 @@ function positionEventListener() {
     });
 }
 
+
+// Attendre que le DOM soit complètement chargé
+document.addEventListener('DOMContentLoaded', () => {
+    // Récupérer les éléments HTML
+    const input = document.getElementById('teamNameInput');
+    const validateButton = document.getElementById('validateTeamName');
+    const teamNameDiv = document.querySelector('.teamName');
+
+    // Ajouter un écouteur d'événement sur le bouton
+    validateButton.addEventListener('click', () => {
+        // Récupérer la valeur de l'input
+        const teamName = input.value.trim();
+
+        // Vérifier si l'input n'est pas vide
+        if (teamName !== '') {
+            // Mettre à jour le contenu du div avec la valeur de l'input
+            teamNameDiv.textContent = `name of your team : ${teamName}`;
+
+            // Afficher le div
+            teamNameDiv.classList.remove('hidden');
+        } else {
+            // Cacher le div si l'input est vide
+            teamNameDiv.textContent = '';
+            teamNameDiv.classList.add('hidden');
+            alert('Veuillez entrer un nom d\'équipe.');
+        }
+    });
+});
+
+
 // Attacher les écouteurs d'événements une fois le DOM chargé
 document.addEventListener('DOMContentLoaded', positionEventListener);
 

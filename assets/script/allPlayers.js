@@ -130,34 +130,34 @@ function openAddPlayerModal() {
   modal.classList.add('fixed', 'inset-0', 'bg-black', 'bg-opacity-50', 'flex', 'items-center', 'justify-center', 'z-50');
   modal.innerHTML = `
     <div class="bg-white p-6 rounded-lg max-w-4xl w-full">
-      <h2 class="text-xl font-bold mb-4">Ajouter un Joueur</h2>
+      <h2 class="text-xl font-bold mb-4">Add Player</h2>
       <form id="addPlayerForm" class="space-y-4">
         <!-- Ligne 1 : Nom et Position -->
         <div class="flex gap-4">
-          <input type="text" name="name" placeholder="Nom" class="w-1/2 mb-2 p-2 border rounded" required>
+          <input type="text" name="name" placeholder="Name" class="w-1/2 mb-2 p-2 border rounded" required>
           <input type="text" name="position" placeholder="Position" class="w-1/2 mb-2 p-2 border rounded" required>
         </div>
 
         <!-- Ligne 2 : Nationalité et Évaluation -->
         <div class="flex gap-4">
-          <input type="text" name="nationality" placeholder="Nationalité" class="w-1/2 mb-2 p-2 border rounded" required>
-          <input type="number" name="rating" placeholder="Évaluation" class="w-1/2 mb-2 p-2 border rounded" required>
+          <input type="text" name="nationality" placeholder="Nationality" class="w-1/2 mb-2 p-2 border rounded" required>
+          <input type="number" name="rating" placeholder="Evaluation" class="w-1/2 mb-2 p-2 border rounded" required>
         </div>
 
         <!-- Ligne 3 : Statistiques -->
         <div class="flex gap-4">
           <input type="number" name="pace" placeholder="Vitesse" class="w-1/3 mb-2 p-2 border rounded" required>
-          <input type="number" name="shooting" placeholder="Tir" class="w-1/3 mb-2 p-2 border rounded" required>
-          <input type="number" name="passing" placeholder="Passes" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="shooting" placeholder="Shooting" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="passing" placeholder="Passing" class="w-1/3 mb-2 p-2 border rounded" required>
         </div>
         <div class="flex gap-4">
-          <input type="number" name="dribbling" placeholder="Dribbles" class="w-1/3 mb-2 p-2 border rounded" required>
-          <input type="number" name="defending" placeholder="Défense" class="w-1/3 mb-2 p-2 border rounded" required>
-          <input type="number" name="physical" placeholder="Physique" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="dribbling" placeholder="Dribbling" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="defending" placeholder="Defensing" class="w-1/3 mb-2 p-2 border rounded" required>
+          <input type="number" name="physical" placeholder="Physical" class="w-1/3 mb-2 p-2 border rounded" required>
         </div>
 
         <!-- Gardien de but (champ conditionnel) -->
-        <div class="flex gap-4">
+       <!-- <div class="flex gap-4">
           <input type="number" name="diving" placeholder="Plongée" class="w-1/3 mb-2 p-2 border rounded">
           <input type="number" name="handling" placeholder="Prise de balle" class="w-1/3 mb-2 p-2 border rounded">
           <input type="number" name="kicking" placeholder="Dégagement" class="w-1/3 mb-2 p-2 border rounded">
@@ -165,7 +165,7 @@ function openAddPlayerModal() {
         <div class="flex gap-4">
           <input type="number" name="reflexes" placeholder="Réflexes" class="w-1/3 mb-2 p-2 border rounded">
           <input type="number" name="positioning" placeholder="Positionnement" class="w-1/3 mb-2 p-2 border rounded">
-        </div>
+        </div> -->
 
         <!-- Champ pour l'URL de l'image -->
         <div class="flex gap-4 mt-4">
@@ -223,16 +223,6 @@ function openAddPlayerModal() {
 }
 
 // // Fonction d'ajout de joueur
-// function addPlayer(newPlayer) {
-//   // Logique d'ajout du joueur (adapter selon votre backend ou stockage local)
-//   console.log('Player added:', newPlayer);
-
-//   // Si vous utilisez un tableau pour gérer les joueurs, vous pouvez l'ajouter à votre liste ici
-//   // players.push(newPlayer);
-//   createPlayerCard(newPlayer);
-//   // Optionnel : Recharger la liste des joueurs pour afficher la mise à jour
-//   loadPlayers();
-// }
 function addPlayer(newPlayer) {
   fetch('../data/DB/players.json')
     .then(response => response.json())
@@ -244,7 +234,9 @@ function addPlayer(newPlayer) {
       console.log('Nouveau joueur ajouté au JSON:', data);
 
       // Afficher immédiatement la carte
+      
       const playerCard = createPlayerCard(newPlayer);
+      setupPlayerCardCRUD(playerCard, newPlayer)
       document.getElementById('playersContainer').appendChild(playerCard);
     })
     .catch(error => {
@@ -252,9 +244,6 @@ function addPlayer(newPlayer) {
     });
 }
 
-
-
-//--------------------------------
 
 // Modal pour modifier un joueur
 function openEditPlayerModal(player) {
@@ -274,7 +263,7 @@ function openEditPlayerModal(player) {
   modal.classList.add('fixed', 'inset-0', 'bg-black', 'bg-opacity-50', 'flex', 'items-center', 'justify-center', 'z-50');
   modal.innerHTML = `
     <div class="bg-white p-6 rounded-lg max-w-md w-full">
-      <h2 class="text-xl font-bold mb-4">Modifier le Joueur</h2>
+      <h2 class="text-xl font-bold mb-4">Edit player</h2>
       <form id="editPlayerForm">
         <!-- Basic Player Info -->
         <input type="text" name="name" value="${player.name}" placeholder="Nom" class="w-full mb-2 p-2 border rounded">
@@ -400,13 +389,13 @@ function createPlayerCard(player) {
   return playerCard;
 }
 
-//Fonction modifiée de chargement des joueurs
+//Fonction de chargement des joueurs
 function loadPlayers() {
   fetch('../data/DB/players.json')
     .then(response => response.json())
     .then(data => {
       const playersContainer = document.getElementById('playersContainer');
-      playersContainer.innerHTML = ''; // Vider le conteneur avant de charger
+      playersContainer.innerHTML = ''; 
 
       data.players.forEach(player => {
         const playerCard = createPlayerCard(player);
@@ -426,13 +415,13 @@ function loadPlayers() {
 }
 
 // Appel initial
-loadPlayers();
 function updatePlayer(updatedPlayer) {
   // Charger à nouveau tous les joueurs et mettre à jour
   fetch('../data/DB/players.json')
     .then(response => response.json())
     .then(data => {
       // Trouver l'index du joueur à mettre à jour
+      
       const playerIndex = data.players.findIndex(p => p.id === updatedPlayer.id);
       
       if (playerIndex !== -1) {
@@ -450,16 +439,6 @@ function updatePlayer(updatedPlayer) {
     });
 }
 
-function loadPlayers() {
-  fetch('../data/DB/players.json')
-    .then(response => response.json())
-    .then(data => {
-      renderPlayers(data.players);
-    })
-    .catch(error => {
-      console.error('Erreur de chargement du fichier JSON:', error);
-    });
-}
 
 function renderPlayers(players) {
   const playersContainer = document.getElementById('playersContainer');
