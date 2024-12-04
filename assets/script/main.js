@@ -23,25 +23,25 @@ function createPlayersCard(player, positionName) {
     // Créer un élément HTML pour la carte
     const playerCard = document.createElement('div');
     playerCard.innerHTML = `
-        <div class="relative" style="width: 200px; height: 300px; background-image: url('/assets/data/images/icon-25.png'); background-size: cover; background-position: center;">
+        <div class="relative" style="width: 150px; height: 260px; background-image: url('/assets/data/images/icon-25.png'); background-size: cover; background-position: center;">
             <div class="flex justify-around">
-                <div class="mt-[25%] ml-3">
-                    <p class="font-semibold">${player.position}</p>
+                <div class="mt-[25%] ml-1">
+                    <p class="font-semibold text-xs">${player.position}</p>
                     <img src="${player.flag}" alt="${player.name}">
                 </div>
-                <div class="mt-[20%]">
+                <div class="mt-[20%] ml-1">
                     <img src="${player.photo}" alt="${player.name}" class="object-cover transition-transform duration-300 group-hover:scale-110">
                 </div>
             </div>
             <div>
-                <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
+                <p class="font-bold text-xs mt-2 ml-1">${player.name}</p>
             </div>
             <div class="flex-col">
                 <div class="flex space-x-1 tex-sm">
-                    ${statsLabels.map(label => `<p class="font-bold text-sm ml-5 mt-2">${label}</p>`).join('')}
+                    ${statsLabels.map(label => `<p class="font-bold text-xs mt-2 ml-1">${label}</p>`).join('')}
                 </div>
                 <div class="flex space-x-2 tex-sm">
-                    ${statsValues.map(value => `<p class="text-sm ml-5 mt-2">${value}</p>`).join('')}
+                    ${statsValues.map(value => `<p class="text-xs   mt-2 ml-1">${value}</p>`).join('')}
                 </div>
             </div>
         </div>
@@ -69,26 +69,12 @@ function updatePositionPlayers(player, positionName) {
         : [player.rating, player.pace, player.shooting, player.passing, player.dribbling, player.defending, player.physical];
 
     positionPlayers.forEach(positionPlayer => {
+        //apporter la modification
         positionPlayer.innerHTML = `
-            <div class="relative" style="width: 200px; height: 300px; background-image: url('/assets/data/images/icon-25.png'); background-size: cover; background-position: center;">
+            <div class="relative lg:w-24 lg:h-48 w-24 h-26">
                 <div class="flex justify-around">
-                    <div class="mt-[25%] ml-3">
-                        <p class="font-semibold">${player.position}</p>
-                        <img src="${player.flag}" alt="${player.name}">
-                    </div>
                     <div class="mt-[20%]">
                         <img src="${player.photo}" alt="${player.name}" class="object-cover transition-transform duration-300 group-hover:scale-110">
-                    </div>
-                </div>
-                <div>
-                    <p class="font-bold text-sm ml-5 mt-2">${player.name}</p>
-                </div>
-                <div class="flex-col">
-                    <div class="flex space-x-1 tex-sm">
-                        ${statsLabels.map(label => `<p class="font-bold text-sm ml-5 mt-2">${label}</p>`).join('')}
-                    </div>
-                    <div class="flex space-x-2 tex-sm">
-                        ${statsValues.map(value => `<p class="text-sm ml-5 mt-2">${value}</p>`).join('')}
                     </div>
                 </div>
             </div>
